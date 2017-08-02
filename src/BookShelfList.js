@@ -9,7 +9,7 @@ const BookShelfList = () => {
         <h1>MyReads</h1>
       </div>
       <div className="list-books-content">
-        <BookShelf />
+        <BookShelf title="Currently Reading" />
         <div>
           <div className="bookshelf">
             <h2 className="bookshelf-title">Want to Read</h2>
