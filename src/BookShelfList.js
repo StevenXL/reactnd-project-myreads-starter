@@ -1,6 +1,6 @@
 import React from "react";
 
-const BookShelf = () => {
+const BookShelfList = () => {
   return (
     <div className="list-books">
       <div className="list-books-title">
@@ -254,4 +254,4 @@ const BookShelf = () => {
   );
 };
 
-export default BookShelf;
+export default BookShelfList;
