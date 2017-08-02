@@ -1,16 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const SearchPage = () => {
   console.log("in search");
   return (
     <div className="search-books">
       <div className="search-books-bar">
-        <a
-          className="close-search"
-          onClick={() => this.setState({ showSearchPage: false })}
-        >
+        <Link className="close-search" to="/">
           Close
-        </a>
+        </Link>
         <div className="search-books-input-wrapper">
           {/* 
                     NOTES: The search from BooksAPI is limited to a particular set of search terms.
