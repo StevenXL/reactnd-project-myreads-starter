@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const SearchPage = () => {
-  console.log("in search");
   return (
     <div className="search-books">
       <div className="search-books-bar">
