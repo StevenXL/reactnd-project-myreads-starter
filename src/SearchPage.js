@@ -1,6 +1,7 @@
 import React from "react";
 
 const SearchPage = () => {
+  console.log("in search");
   return (
     <div className="search-books">
       <div className="search-books-bar">
