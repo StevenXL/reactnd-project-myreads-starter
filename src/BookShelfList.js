@@ -17,7 +17,7 @@ const uniqueShelves = books => {
   return shelves.reduce(reducer, []);
 };
 
-const BookShelfList = ({ books }) => {
+const BookShelfList = ({ books, moveBook }) => {
   const shelves = uniqueShelves(books);
 
   const shelvesData = shelves.map(shelf => {
@@ -26,7 +26,7 @@ const BookShelfList = ({ books }) => {
   });
 
   const shelfElements = shelvesData.map(shelfData =>
-    <BookShelf key={shelfData.title} {...shelfData} />
+    <BookShelf key={shelfData.title} {...shelfData} moveBook={moveBook} />
   );
 
   return (
@@ -46,5 +46,8 @@ const BookShelfList = ({ books }) => {
   );
 };
 
-BookShelfList.propTypes = { books: PropTypes.array.isRequired };
+BookShelfList.propTypes = {
+  books: PropTypes.array.isRequired,
+  moveBook: PropTypes.func.isRequired
+};
 export default BookShelfList;
