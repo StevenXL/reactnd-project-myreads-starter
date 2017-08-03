@@ -3,13 +3,26 @@ import PropTypes from "prop-types";
 
 import Book from "./Book";
 
+const titleForDisplay = title => {
+  switch (title) {
+    case "currentlyReading":
+      return "Currently Reading";
+    case "wantToRead":
+      return "Want to Read";
+    case "read":
+      return "Read";
+    default:
+      return title;
+  }
+};
+
 const BookShelf = ({ title, books }) => {
   const bookElements = books.map(book => <Book key={book.id} {...book} />);
 
   return (
     <div className="bookshelf">
       <h2 className="bookshelf-title">
-        {title}
+        {titleForDisplay(title)}
       </h2>
       <div className="bookshelf-books">
         <ol className="books-grid">
