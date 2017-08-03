@@ -16,8 +16,10 @@ const titleForDisplay = title => {
   }
 };
 
-const BookShelf = ({ title, books }) => {
-  const bookElements = books.map(book => <Book key={book.id} {...book} />);
+const BookShelf = ({ title, books, moveBook }) => {
+  const bookElements = books.map(book =>
+    <Book key={book.id} {...book} moveBook={moveBook} />
+  );
 
   return (
     <div className="bookshelf">
@@ -35,7 +37,8 @@ const BookShelf = ({ title, books }) => {
 
 BookShelf.propTypes = {
   title: PropTypes.string.isRequired,
-  books: PropTypes.array.isRequired
+  books: PropTypes.array.isRequired,
+  moveBook: PropTypes.func.isRequired
 };
 
 export default BookShelf;
