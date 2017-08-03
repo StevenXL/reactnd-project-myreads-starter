@@ -14,7 +14,7 @@ class BooksApp extends React.Component {
     });
   }
 
-  moveBook(bookId, shelf) {
+  moveBook = (bookId, shelf) => {
     const newBookState = this.state.books.map(book => {
       if (book.id === bookId) {
         return Object.assign({}, book, { shelf });
@@ -24,7 +24,7 @@ class BooksApp extends React.Component {
     });
 
     this.setState({ books: newBookState });
-  }
+  };
 
   render() {
     const { books } = this.state;
