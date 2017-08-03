@@ -14,18 +14,16 @@ class BooksApp extends React.Component {
     });
   }
 
-  moveBook(bookId) {
-    return newShelf => {
-      const newBookState = this.state.books.map(book => {
-        if (book.id === bookId) {
-          return Object.assign({}, book, { shelf: newShelf });
-        } else {
-          return book;
-        }
-      });
+  moveBook(bookId, shelf) {
+    const newBookState = this.state.books.map(book => {
+      if (book.id === bookId) {
+        return Object.assign({}, book, { shelf });
+      } else {
+        return book;
+      }
+    });
 
-      this.setState({ books: newBookState });
-    };
+    this.setState({ books: newBookState });
   }
 
   render() {
