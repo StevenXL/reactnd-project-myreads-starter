@@ -14,13 +14,32 @@ class BooksApp extends React.Component {
     });
   }
 
+  moveBook(bookId) {
+    return newShelf => {
+      const newBookState = this.state.books.map(book => {
+        if (book.id === bookId) {
+          return Object.assign({}, book, { shelf: newShelf });
+        } else {
+          return book;
+        }
+      });
+
+      this.setState({ books: newBookState });
+    };
+  }
+
   render() {
     const { books } = this.state;
 
     return (
       <div className="app">
         <Route path="/search" component={SearchPage} />
-        <Route exact path="/" render={() => <BookShelfList books={books} />} />
+        <Route
+          exact
+          path="/"
+          render={() =>
+            <BookShelfList books={books} moveBook={this.moveBook} />}
+        />
       </div>
     );
   }
