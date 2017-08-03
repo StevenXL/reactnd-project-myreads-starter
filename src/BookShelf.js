@@ -11,6 +11,8 @@ const titleForDisplay = title => {
       return "Want to Read";
     case "read":
       return "Read";
+    case "none":
+      return "None";
     default:
       return title;
   }
