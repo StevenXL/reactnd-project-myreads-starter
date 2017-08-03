@@ -6,6 +6,14 @@ import BookShelfList from "./BookShelfList";
 import { Route } from "react-router-dom";
 
 class BooksApp extends React.Component {
+  state = { books: [] };
+
+  componentDidMount() {
+    BooksAPI.getAll().then(data => {
+      this.setState({ books: data });
+    });
+  }
+
   render() {
     return (
       <div className="app">
