@@ -28,6 +28,7 @@ class BooksApp extends React.Component {
 
   render() {
     const { books } = this.state;
+    const moveBook = this.moveBook;
 
     return (
       <div className="app">
@@ -35,8 +36,7 @@ class BooksApp extends React.Component {
         <Route
           exact
           path="/"
-          render={() =>
-            <BookShelfList books={books} moveBook={this.moveBook} />}
+          render={() => <BookShelfList books={books} moveBook={moveBook} />}
         />
       </div>
     );
