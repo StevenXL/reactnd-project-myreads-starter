@@ -25,9 +25,9 @@ class SearchPage extends React.Component {
     this.setState({ booksFromQuery: filteredBooks });
   };
 
-  moveBook = (bookId, shelf) => {
-    this.removeFromSearchPage(bookId);
-    this.props.moveBook(bookId, shelf);
+  moveBook = (book, shelf) => {
+    this.removeFromSearchPage(book.id);
+    this.props.moveBook(book, shelf);
   };
 
   syncQueryAndShelf = booksFromQuery => {
