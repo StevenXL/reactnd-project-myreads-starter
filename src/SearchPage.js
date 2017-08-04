@@ -18,6 +18,18 @@ class SearchPage extends React.Component {
     }
   };
 
+  removeFromSearchPage = bookId => {
+    const filteredBooks = this.state.booksFromQuery.filter(
+      book => book.id !== bookId
+    );
+    this.setState({ booksFromQuery: filteredBooks });
+  };
+
+  moveBook = (bookId, shelf) => {
+    this.removeFromSearchPage(bookId);
+    this.props.moveBook(bookId, shelf);
+  };
+
   syncQueryAndShelf = booksFromQuery => {
     const booksFromShelf = this.props.books;
 
@@ -43,7 +55,6 @@ class SearchPage extends React.Component {
   render() {
     const { booksFromQuery } = this.state;
     const handleInput = this.handleInput;
-    const { moveBook } = this.props;
 
     return (
       <div className="search-books">
@@ -64,7 +75,7 @@ class SearchPage extends React.Component {
             <BookShelf
               title="Search Results"
               books={booksFromQuery}
-              moveBook={moveBook}
+              moveBook={this.moveBook}
             />}
         </div>
       </div>
