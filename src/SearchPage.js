@@ -18,9 +18,25 @@ class SearchPage extends React.Component {
     }
   };
 
+  syncQueryAndShelf = booksFromQuery => {
+    const booksFromShelf = this.props.books;
+
+    const shelfIds = booksFromShelf.map(book => book.id);
+
+    const merged = booksFromQuery.map(queryBook => {
+      if (shelfIds.includes(queryBook.id)) {
+        return booksFromShelf.find(shelfBook => shelfBook.id === queryBook.id);
+      } else {
+        return queryBook;
+      }
+    });
+
+    return merged;
+  };
+
   performQuery = query => {
     BooksAPI.search(query).then(books =>
-      this.setState({ booksFromQuery: books })
+      this.setState({ booksFromQuery: this.syncQueryAndShelf(books) })
     );
   };
 
