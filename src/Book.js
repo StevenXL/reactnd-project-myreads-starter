@@ -17,7 +17,7 @@ const Book = ({ title, authors, imageLinks, moveBook, shelf, id }) => {
           <div className="book-shelf-changer">
             <select
               value={shelf}
-              onChange={event => moveBook(id, event.target.value)}
+              onChange={event => moveBook(event.target.value)}
             >
               <option value="none" disabled>
                 Move to...
