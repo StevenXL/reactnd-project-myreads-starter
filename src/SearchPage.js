@@ -6,7 +6,7 @@ import BookShelf from "./BookShelf";
 import * as BooksAPI from "./BooksAPI";
 
 class SearchPage extends React.Component {
-  state = { books: [] };
+  state = { booksFromQuery: [] };
 
   handleInput = event => {
     const query = event.target.value;
@@ -19,11 +19,13 @@ class SearchPage extends React.Component {
   };
 
   performQuery = query => {
-    BooksAPI.search(query).then(books => this.setState({ books: books }));
+    BooksAPI.search(query).then(books =>
+      this.setState({ booksFromQuery: books })
+    );
   };
 
   render() {
-    const { books } = this.state;
+    const { booksFromQuery } = this.state;
     const handleInput = this.handleInput;
     const { moveBook } = this.props;
 
@@ -42,10 +44,10 @@ class SearchPage extends React.Component {
           </div>
         </div>
         <div className="search-books-results">
-          {books.length > 0 &&
+          {booksFromQuery.length > 0 &&
             <BookShelf
               title="Search Results"
-              books={books}
+              books={booksFromQuery}
               moveBook={moveBook}
             />}
         </div>
