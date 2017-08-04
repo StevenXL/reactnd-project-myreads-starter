@@ -1,8 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import BookShelf from "./BookShelf";
 
 class SearchPage extends React.Component {
+  state = { books: [] };
+
   render() {
+    const { books } = this.state;
+
     return (
       <div className="search-books">
         <div className="search-books-bar">
@@ -14,7 +19,7 @@ class SearchPage extends React.Component {
           </div>
         </div>
         <div className="search-books-results">
-          <ol className="books-grid" />
+          <BookShelf title="Search Results" books={books} moveBook={() => 1} />
         </div>
       </div>
     );
