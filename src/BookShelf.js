@@ -19,9 +19,11 @@ const titleForDisplay = title => {
 };
 
 const BookShelf = ({ title, books, moveBook }) => {
-  const bookElements = books.map(book =>
-    <Book key={book.id} {...book} moveBook={moveBook} />
-  );
+  const bookElements = books.map(book => {
+    return (
+      <Book key={book.id} {...book} moveBook={shelf => moveBook(book, shelf)} />
+    );
+  });
 
   return (
     <div className="bookshelf">
