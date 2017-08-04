@@ -8,26 +8,42 @@ import { Route } from "react-router-dom";
 class BooksApp extends React.Component {
   state = { books: [] };
 
+  updateBookInShelf = book => {
+    const newState = this.state.books.map(
+      shelfBook => (shelfBook.id === book.id ? book : shelfBook)
+    );
+
+    this.setState({ books: newState });
+  };
+
+  addBookToShelf = book => {
+    const newState = this.state.books.concat(book);
+
+    this.setState({ books: newState });
+  };
+
+  bookInBookShelf = book => {
+    return this.state.books.find(shelfBook => shelfBook.id === book.id);
+  };
+
+  moveBook = (book, shelf) => {
+    const newBook = Object.assign({}, book, { shelf });
+
+    if (this.bookInBookShelf(newBook)) {
+      this.updateBookInShelf(newBook);
+    } else {
+      this.addBookToShelf(newBook);
+    }
+
+    // optimistic updating; we update UI before updating server
+    BooksAPI.update(newBook, shelf);
+  };
+
   componentDidMount() {
     BooksAPI.getAll().then(data => {
       this.setState({ books: data });
     });
   }
-
-  moveBook = (bookId, shelf) => {
-    const newBookState = this.state.books.map(book => {
-      if (book.id === bookId) {
-        return Object.assign({}, book, { shelf });
-      } else {
-        return book;
-      }
-    });
-
-    this.setState({ books: newBookState }); // update UI
-
-    // doesn't matter if setState as not fired yet.
-    BooksAPI.update({ id: bookId }, shelf);
-  };
 
   render() {
     const { books } = this.state;
