@@ -22,7 +22,12 @@ class SearchPage extends React.Component {
           </div>
         </div>
         <div className="search-books-results">
-          <BookShelf title="Search Results" books={books} moveBook={moveBook} />
+          {books.length > 0 &&
+            <BookShelf
+              title="Search Results"
+              books={books}
+              moveBook={moveBook}
+            />}
         </div>
       </div>
     );
