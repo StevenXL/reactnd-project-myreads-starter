@@ -23,7 +23,11 @@ class BooksApp extends React.Component {
       }
     });
 
-    this.setState({ books: newBookState });
+    this.setState({ books: newBookState }); // update UI
+
+    // doesn't matter if setState as not fired yet.
+    const book = this.state.books.find(book => book.id === bookId);
+    BooksAPI.update(book, shelf);
   };
 
   render() {
