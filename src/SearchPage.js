@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+
 import BookShelf from "./BookShelf";
 
 class SearchPage extends React.Component {
@@ -7,6 +9,7 @@ class SearchPage extends React.Component {
 
   render() {
     const { books } = this.state;
+    const { moveBook } = this.props;
 
     return (
       <div className="search-books">
@@ -19,11 +22,13 @@ class SearchPage extends React.Component {
           </div>
         </div>
         <div className="search-books-results">
-          <BookShelf title="Search Results" books={books} moveBook={() => 1} />
+          <BookShelf title="Search Results" books={books} moveBook={moveBook} />
         </div>
       </div>
     );
   }
 }
+
+SearchPage.propTypes = { moveBook: PropTypes.func.isRequired };
 
 export default SearchPage;
