@@ -18,15 +18,7 @@ class SearchPage extends React.Component {
     }
   };
 
-  removeFromSearchPage = bookId => {
-    const filteredBooks = this.state.booksFromQuery.filter(
-      book => book.id !== bookId
-    );
-    this.setState({ booksFromQuery: filteredBooks });
-  };
-
   moveBook = (book, shelf) => {
-    this.removeFromSearchPage(book.id);
     this.props.moveBook(book, shelf);
   };
 
