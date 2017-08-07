@@ -40,9 +40,13 @@ const Book = ({ title, authors, imageLinks, moveBook, shelf, id }) => {
   );
 };
 
+Book.defaultProps = {
+  authors: []
+};
+
 Book.propTypes = {
   title: PropTypes.string.isRequired,
-  authors: PropTypes.arrayOf(PropTypes.string).isRequired,
+  authors: PropTypes.arrayOf(PropTypes.string),
   imageLinks: PropTypes.shape({ thumbnail: PropTypes.string }).isRequired,
   moveBook: PropTypes.func.isRequired,
   shelf: PropTypes.string.isRequired,
