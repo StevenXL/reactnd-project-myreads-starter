@@ -48,7 +48,9 @@ class SearchPage extends React.Component {
 
   render() {
     const { booksFromQuery } = this.state;
-    const handleInput = this.handleInput;
+    const { handleInput, syncQueryAndShelf } = this;
+
+    const booksToDisplay = syncQueryAndShelf(booksFromQuery);
 
     return (
       <div className="search-books">
@@ -68,7 +70,7 @@ class SearchPage extends React.Component {
           {booksFromQuery.length > 0 &&
             <BookShelf
               title="Search Results"
-              books={booksFromQuery}
+              books={booksToDisplay}
               moveBook={this.moveBook}
             />}
         </div>
