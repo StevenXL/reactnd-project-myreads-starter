@@ -48,17 +48,20 @@ class BooksApp extends React.Component {
   render() {
     const { books } = this.state;
     const moveBook = this.moveBook;
+    const booksForDisplay = books.filter(book => book.shelf !== "none");
 
     return (
       <div className="app">
         <Route
           path="/search"
-          render={() => <SearchPage moveBook={moveBook} books={books} />}
+          render={() =>
+            <SearchPage books={booksForDisplay} moveBook={moveBook} />}
         />
         <Route
           exact
           path="/"
-          render={() => <BookShelfList books={books} moveBook={moveBook} />}
+          render={() =>
+            <BookShelfList books={booksForDisplay} moveBook={moveBook} />}
         />
       </div>
     );
