@@ -21,7 +21,11 @@ const titleForDisplay = title => {
 const BookShelf = ({ title, books, moveBook }) => {
   const bookElements = books.map(book => {
     return (
-      <Book key={book.id} {...book} moveBook={shelf => moveBook(book, shelf)} />
+      <Book
+        key={`${book.id}-${book.title}`}
+        {...book}
+        moveBook={shelf => moveBook(book, shelf)}
+      />
     );
   });
 
