@@ -38,7 +38,7 @@ const Book = ({ title, authors, imageLinks, moveBook, shelf, id }) => {
 
 Book.defaultProps = {
   authors: [],
-  shelf: ""
+  shelf: "none"
 };
 
 Book.propTypes = {
