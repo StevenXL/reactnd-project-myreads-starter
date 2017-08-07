@@ -1,4 +1,5 @@
 import React from "react";
+import Ramda from "ramda";
 import PropTypes from "prop-types";
 
 import Book from "./Book";
@@ -19,7 +20,9 @@ const titleForDisplay = title => {
 };
 
 const BookShelf = ({ title, books, moveBook }) => {
-  const bookElements = books.map(book => {
+  const uniqueBooks = Ramda.uniqBy(book => book.id, books);
+
+  const bookElements = uniqueBooks.map(book => {
     return (
       <Book
         key={`${book.id}-${book.title}`}
