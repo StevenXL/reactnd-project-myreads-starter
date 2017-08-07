@@ -41,7 +41,8 @@ const Book = ({ title, authors, imageLinks, moveBook, shelf, id }) => {
 };
 
 Book.defaultProps = {
-  authors: []
+  authors: [],
+  shelf: ""
 };
 
 Book.propTypes = {
@@ -49,7 +50,7 @@ Book.propTypes = {
   authors: PropTypes.arrayOf(PropTypes.string),
   imageLinks: PropTypes.shape({ thumbnail: PropTypes.string }).isRequired,
   moveBook: PropTypes.func.isRequired,
-  shelf: PropTypes.string.isRequired,
+  shelf: PropTypes.string,
   id: PropTypes.string.isRequired
 };
 
