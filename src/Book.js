@@ -8,11 +8,7 @@ const Book = ({ title, authors, imageLinks, moveBook, shelf, id }) => {
         <div className="book-top">
           <div
             className="book-cover"
-            style={{
-              width: 128,
-              height: 193,
-              backgroundImage: `url(${imageLinks.thumbnail})`
-            }}
+            style={{ backgroundImage: `url(${imageLinks.thumbnail})` }}
           />
           <div className="book-shelf-changer">
             <select

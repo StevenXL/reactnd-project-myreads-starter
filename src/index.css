@@ -9,3 +9,8 @@ body {
   padding: 0;
   font-family: 'Roboto', sans-serif;
 }
+
+.book-cover {
+  width: 128px;
+  height: 193px;
+}
