@@ -41,7 +41,7 @@ class SearchPage extends React.Component {
   performQuery = query => {
     BooksAPI.search(query).then(results => {
       if (!results.error && this.state.booksFromQuery !== results) {
-        this.setState({ booksFromQuery: this.syncQueryAndShelf(results) });
+        this.setState({ booksFromQuery: results });
       }
     });
   };
