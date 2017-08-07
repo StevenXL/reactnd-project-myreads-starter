@@ -13,7 +13,7 @@ const titleForDisplay = title => {
     case "read":
       return "Read";
     case "none":
-      return "None";
+      return "Removing";
     default:
       return title;
   }
